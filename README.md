@@ -16,7 +16,6 @@
 ### Association
 
 - has_many :items 
-- has_many :sending_destinations
 - has_many :orders, dependent: :destroy
 
 
