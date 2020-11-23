@@ -2,18 +2,18 @@
 
 ## Users名
 
-| Column           | Type          | Options                               |
-| ---------------- | ------------- | ------------------------------------- |
-| nickname         | string        | null: false                           |
-| email            | string        | null: false, unique: true, index:true |
-| password         | string        | null: false                           |
-| family_name      | string        | null: false                           |
-| first_name       | string        | null: false                           |
-| family_name_kana | string        | null: false                           |
-| first_name_kana  | string        | null: false                           |
-| birth_year       | references    | null: false, foreign_key: true        |
-| birth_month      | references    | null: false, foreign_key: true        |
-| birth_day        | references    | null: false, foreign_key: true        |
+| Column             | Type          | Options                               |
+| ------------------ | ------------- | ------------------------------------- |
+| nickname           | string        | null: false                           |
+| email              | string        | null: false, unique: true, index:true |
+| encrypted_password | string        | null: false                           |
+| family_name        | string        | null: false                           |
+| first_name         | string        | null: false                           |
+| family_name_kana   | string        | null: false                           |
+| first_name_kana    | string        | null: false                           |
+| birth_year         | references    | null: false, foreign_key: true        |
+| birth_month        | references    | null: false, foreign_key: true        |
+| birth_day          | references    | null: false, foreign_key: true        |
 
 ### Association
 
