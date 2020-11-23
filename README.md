@@ -25,24 +25,19 @@
 
 ## Items名
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| name            | string     | null: false                    |
-| introduction    | text       | null: false                    |
-| category        | references | null: false, foreign_key: true |
-| item_condition  | references | null: false, foreign_key: true |
-| postage_payer   | references | null: false, foreign_key: true |
-| prefecture_code | references | null: false, foreign_key: true |
-| preparation_day | references | null: false, foreign_key: true |
-| price           | integer    | null: false                    |
-| seller          | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| name               | string     | null: false                    |
+| introduction       | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| item_condition_id  | integer    | null: false                    |
+| postage_payer_id   | integer    | null: false                    |
+| prefecture_code_id | integer    | null: false                    |
+| preparation_day_id | integer    | null: false                    |
+| price              | integer    | null: false                    |
+| seller             | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to_active_hash :category
-- belongs_to_active_hash :item_condition
-- belongs_to_active_hash :postage_payer
-- belongs_to_active_hash :prefecture_code
-- belongs_to_active_hash :preparation_day
 - belongs_to :seller, class_name: "User"
 - has_one :order, dependent: :destroy
 
