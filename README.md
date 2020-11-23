@@ -1,6 +1,6 @@
 # テーブル設計
 
-## Users名
+## Usersテーブル
 
 | Column             | Type          | Options                               |
 | ------------------ | ------------- | ------------------------------------- |
@@ -23,7 +23,7 @@
 - belongs_to_active_hash :birth_day
 
 
-## Items名
+## Itemsテーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -42,7 +42,7 @@
 - has_one :order, dependent: :destroy
 
 
-## Orders名
+## Ordersテーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -56,19 +56,18 @@
 - has_one :sending_destination, dependent: :destroy
 
 
-## Sending_destination名
+## Sending_destinationテーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| post_code       | string     | null: false                    |
-| prefecture_code | references | null: false, foreign_key: true |
-| city            | string     | null: false                    |
-| house_number    | string     | null: false                    |
-| building_name   | string     |                                |
-| phone_number    | integer    | null: false, unique: true      |
-| order           | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| post_code          | string     | null: false                    |
+| prefecture_code_id | integer    | null: false                    |
+| city               | string     | null: false                    |
+| house_number       | string     | null: false                    |
+| building_name      | string     |                                |
+| phone_number       | integer    | null: false, unique: true      |
+| order              | references | null: false, foreign_key: true |
 
 
 ### Association
 - belongs_to :order
-- belongs_to_active_hash :prefecture_code
