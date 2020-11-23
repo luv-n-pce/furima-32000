@@ -27,7 +27,6 @@
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| item_img        | references | null: false, foreign_key: true |
 | name            | string     | null: false                    |
 | introduction    | text       | null: false                    |
 | category        | references | null: false, foreign_key: true |
@@ -39,7 +38,6 @@
 | seller          | references | null: false, foreign_key: true |
 
 ### Association
-- has_many :item_imgs, dependent: :destroy
 - belongs_to_active_hash :category
 - belongs_to_active_hash :item_condition
 - belongs_to_active_hash :postage_payer
