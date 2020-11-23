@@ -60,7 +60,7 @@
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| post_code       | integer    | null: false                    |
+| post_code       | string     | null: false                    |
 | prefecture_code | references | null: false, foreign_key: true |
 | city            | string     | null: false                    |
 | house_number    | string     | null: false                    |
