@@ -15,12 +15,9 @@
 
 ### Association
 
-- has_many :seller_items, foreign_key: "seller_id", class_name: "items"
-- has_many :buyer_items, foreign_key: "buyer_id", class_name: "items"
+- has_many :items 
+- has_many :sending_destinations
 - has_many :orders, dependent: :destroy
-- belongs_to_active_hash :birth_year
-- belongs_to_active_hash :birth_month
-- belongs_to_active_hash :birth_day
 
 
 ## Itemsテーブル
@@ -35,10 +32,10 @@
 | prefecture_code_id | integer    | null: false                    |
 | preparation_day_id | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| seller             | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :seller, class_name: "User"
+- belongs_to :user
 - has_one :order, dependent: :destroy
 
 
@@ -46,12 +43,12 @@
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| buyer  | references | null: false, foreign_key: true |
+| user   | references | null: false, foreign_key: true |
 | item   | references | null: false, foreign_key: true |
 
 
 ### Association
-- belongs_to :buyer, class_name: "User"
+- belongs_to :user
 - belongs_to :item
 - has_one :sending_destination, dependent: :destroy
 
