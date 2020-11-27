@@ -8,7 +8,7 @@ RSpec.describe Item, type: :model do
 
     describe '商品出品の保存' do
       context '商品出品の保存ができる場合' do
-        it "image、name、introduction、category_id、item_condition_id、postage_payer_id、prefecture_code_id、preparation_day_id、priceが存在すれば保存できる" do
+        it "必須項目がすべて存在すれば保存できる" do
           expect(@item).to be_valid
         end
 
@@ -65,8 +65,20 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include("Category Select")
         end
 
+        it "category_idがid1だと保存できない" do
+          @item.category_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Category Select")
+        end
+
         it "item_condition_idが空では保存できない" do
           @item.item_condition_id = ""
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Item condition Select")
+        end
+
+        it "item_condition_idがid1だと保存できない" do
+          @item.item_condition_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include("Item condition Select")
         end
@@ -77,14 +89,32 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include("Postage payer Select")
         end
 
+        it "postage_payer_idがid1だと保存できない" do
+          @item.postage_payer_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Postage payer Select")
+        end
+
         it "prefecture_code_idが空では保存できない" do
           @item.prefecture_code_id = ""
           @item.valid?
           expect(@item.errors.full_messages).to include("Prefecture code Select")
         end
 
+        it "prefecture_code_idがid1だと保存できない" do
+          @item.prefecture_code_id = 1
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Prefecture code Select")
+        end
+
         it "preparation_day_idが空では保存できない" do
           @item.preparation_day_id = ""
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Preparation day Select")
+        end
+
+        it "preparation_day_idがid1だと保存できない" do
+          @item.preparation_day_id = 1
           @item.valid?
           expect(@item.errors.full_messages).to include("Preparation day Select")
         end
