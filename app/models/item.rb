@@ -9,14 +9,18 @@ class Item < ApplicationRecord
   belongs_to :prefecture_code
   belongs_to :preparation_day
 
-  validates :image, presence: true
-  validates :name, presence: true, length: { maximum: 40 }
-  validates :introduction, presence: true, length: { maximum: 1000 }
-  validates :category_id, presence: true, numericality: { other_than: 1, message: "Select" } 
-  validates :item_condition_id, presence: true, numericality: { other_than: 1, message: "Select" } 
-  validates :postage_payer_id, presence: true, numericality: { other_than: 1, message: "Select" } 
-  validates :prefecture_code_id, presence: true, numericality: { other_than: 1, message: "Select" } 
-  validates :preparation_day_id, presence: true, numericality: { other_than: 1, message: "Select" } 
-  validates :price, presence: true, format: { with: /\A[0-9]+\z/, message: "Half-width number" }, numericality: { only_integer: true, greater_than: 300, less_than: 9999999 }
-  
+  with_option presence: true do
+    validates :image
+    validates :name, length: { maximum: 40 }
+    validates :introduction, length: { maximum: 1000 }
+    validates :price, format: { with: /\A[0-9]+\z/, message: "Half-width number" }, numericality: { only_integer: true, greater_than: 300, less_than: 9999999 }
+
+    with_option numericality: { other_than: 1, message: "Select" } do
+      validates :category_id
+      validates :item_condition_id
+      validates :postage_payer_id
+      validates :prefecture_code_id
+      validates :preparation_day_id
+    end
+  end
 end
