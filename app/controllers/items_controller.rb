@@ -30,9 +30,9 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to item_path(@item.id)
+      redirect_to item_path
     else
-      redirect_to edit_item_path(@item.id)
+      redirect_to edit_item_path
     end
   end
 
