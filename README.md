@@ -49,10 +49,10 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :sending_destination, dependent: :destroy
+- has_one :address, dependent: :destroy
 
 
-## Sending_destinationテーブル
+## Addressesテーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
