@@ -34,6 +34,12 @@ RSpec.describe OrderAddress, type: :model do
       expect(@order_address.errors.full_messages).to include("Prefecture Select")
     end
 
+    it "prefecture_idが1以外でないと保存できない" do
+      @order_address.prefecture_id = 1
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("Prefecture Select")
+    end
+
     it "cityが空だと保存できない" do
       @order_address.city = nil
       @order_address.valid?
@@ -59,6 +65,12 @@ RSpec.describe OrderAddress, type: :model do
 
     it "phone_numberが10桁または11桁以外だと保存できない" do
       @order_address.phone_number = "090123456789"
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+    end
+
+    it "phone_numberは数字のみでないと保存できない" do
+      @order_address.phone_number = "090-1234-56789"
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Phone number is invalid")
     end
